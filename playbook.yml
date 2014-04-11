@@ -1,2 +1,3 @@
-hosts : all
+---
+  - hosts: all
 
