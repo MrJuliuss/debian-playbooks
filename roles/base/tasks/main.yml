@@ -1,0 +1,7 @@
+---
+- name: Install base packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - vim
+    - wget
+    - curl
