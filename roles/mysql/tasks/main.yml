@@ -1,0 +1,7 @@
+---
+- name: Install MySql
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-server
+    - mysql-client
+    - libmysqlclient-dev

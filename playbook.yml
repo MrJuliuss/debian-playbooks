@@ -5,3 +5,4 @@
       - git
       - php
       - composer
+      - mysql
