@@ -3,3 +3,5 @@
     roles:
       - base
       - git
+      - php
+      - composer
