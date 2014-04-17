@@ -1,4 +1,7 @@
 ---
+- name: Upgrade distribution
+  apt: update_cache=yes upgrade=yes cache_valid_time=1800
+
 - name: Install base packages
   apt: pkg={{ item }} state=latest
   with_items:
