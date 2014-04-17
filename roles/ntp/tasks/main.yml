@@ -1,0 +1,10 @@
+---
+- name: Install ntp
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - ntp
+    - ntpdate
+
+- name: Add custom ntp conf
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify: Restart ntp client

@@ -1,0 +1,3 @@
+--- 
+- name: Restart ntp client
+  action: service name=ntp state=restarted enabled=yes
