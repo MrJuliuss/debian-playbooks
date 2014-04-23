@@ -9,3 +9,6 @@
     - wget
     - curl
     - python-pycurl
+    - screen
+    - tree
+    - htop
