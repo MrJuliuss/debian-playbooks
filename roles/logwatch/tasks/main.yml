@@ -1,0 +1,8 @@
+---
+- name: Install logwatch
+  apt: pkg={{ item }}
+  with_items:
+    - logwatch
+
+- name: Add custom logwatch conf
+  template: src=logwatch.conf.j2 dest=/usr/share/logwatch/default.conf/logwatch.conf
