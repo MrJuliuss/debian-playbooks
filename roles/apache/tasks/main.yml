@@ -1,0 +1,11 @@
+---
+- name: Install apache2
+  apt: pkg=apache2 state=latest
+
+- name: Enable rewrite mod
+  action: command a2enmod rewrite
+  notify: Restart apache2
+
+- name: Copy apache2 config file
+  template: src=apache2.conf.j2 dest=/etc/apache2/apache2.conf
+  notify: Restart apache2

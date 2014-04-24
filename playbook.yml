@@ -4,6 +4,7 @@
       - base
       - ntp
       - git
+      - apache
       - php
       - composer
       - mysql
