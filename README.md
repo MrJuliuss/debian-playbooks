@@ -8,5 +8,7 @@ Ansible playbooks for debian server
 - [git](roles/git)
 - [composer](roles/composer)
 - [mysql](roles/mysql)
+- [apache](roles/apache)
 - [php (for apache)](roles/php)
 - [ntp client](roles/ntp)
+- [logwatch](roles/logwatch)
