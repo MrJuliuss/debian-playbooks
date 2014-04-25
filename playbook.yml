@@ -9,3 +9,4 @@
       - composer
       - mysql
       - logwatch
+      - fail2ban
