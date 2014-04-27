@@ -4,9 +4,9 @@
       - base
       - ntp
       - git
-      - apache
-      - php
-      - composer
       - mysql
       - logwatch
       - fail2ban
+      - nginx
+      - php-fpm
+      - composer

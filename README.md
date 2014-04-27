@@ -12,3 +12,4 @@ Ansible playbooks for debian server
 - [php (for apache)](roles/php)
 - [ntp client](roles/ntp)
 - [logwatch](roles/logwatch)
+- [fail2ban](roles/fail2ban)
