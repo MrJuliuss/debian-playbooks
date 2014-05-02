@@ -1,6 +1,6 @@
-##WIP
+## Ansible playbooks
 
-Ansible playbooks for debian server
+Playbooks for debian server
 
 ## Roles
 
