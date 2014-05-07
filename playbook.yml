@@ -10,3 +10,4 @@
       - nginx
       - php-fpm
       - composer
+      - zsh

@@ -1,0 +1,11 @@
+---
+- name: Install zsh
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - zsh
+
+- name: Set the default shell to Zsh
+  shell: chsh -s /bin/zsh {{ ansible_ssh_user }}
+
+- name: Deploy .zshrc
+  template: src=.zshrc dest=/home/"{{ ansible_ssh_user }}"/.zshrc owner={{ ansible_ssh_user }}
