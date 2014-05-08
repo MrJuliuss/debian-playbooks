@@ -4,21 +4,10 @@
   with_items:
     - zsh
 
-- name: zsh facts
+- name: Zsh facts
   shell: 'echo $SHELL'
   register: default_shell
 
 - name: Set the default shell to Zsh
   shell: chsh -s /bin/zsh {{ ansible_ssh_user }}
   when: default_shell.stdout.find('/bin/zsh') == -1
-
-- name: Check if .zshrc exists
-  stat: path=/home/"{{ ansible_ssh_user }}"/.zshrc
-  register: check_zshrc
-
-- name: .zshrc doesn't exist deploy .zshrc
-  template: src=.zshrc dest=/home/"{{ ansible_ssh_user }}"/.zshrc owner={{ ansible_ssh_user }}
-  when: check_zshrc.stat.exists == false
-
-- name: Download prezto
-  git: repo=https://github.com/MrJuliuss/prezto.git dest=/home/"{{ ansible_ssh_user }}"/.zprezto
