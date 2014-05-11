@@ -15,3 +15,4 @@ Playbooks for debian server
 - [ntp client](roles/ntp)
 - [logwatch](roles/logwatch)
 - [fail2ban](roles/fail2ban)
+- [zsh](roles/zsh)
