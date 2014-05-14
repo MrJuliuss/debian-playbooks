@@ -16,3 +16,7 @@ Playbooks for debian server
 - [logwatch](roles/logwatch)
 - [fail2ban](roles/fail2ban)
 - [zsh](roles/zsh)
+
+### Todo 
+- gitolite
+- nodejs / npm

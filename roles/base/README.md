@@ -8,3 +8,4 @@
 - tree
 - htop
 - ack-grep
+- rsync
