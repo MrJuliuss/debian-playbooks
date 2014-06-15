@@ -17,6 +17,9 @@ Playbooks for debian server
 - [fail2ban](roles/fail2ban)
 - [zsh](roles/zsh)
 
+### Launch ansible : 
+
+  ansible-playbook playbook.yml -i hosts --user username --ask-pass --ask-sudo-pass
+
 ### Todo 
-- gitolite
 - nodejs / npm
