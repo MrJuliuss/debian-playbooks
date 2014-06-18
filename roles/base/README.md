@@ -9,3 +9,4 @@
 - htop
 - ack-grep
 - rsync
+- httpie
