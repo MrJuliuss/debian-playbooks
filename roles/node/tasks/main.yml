@@ -1,0 +1,12 @@
+---
+- name: Add node backport in sources.list
+  shell: "echo 'deb http://ftp.us.debian.org/debian wheezy-backports main' >> /etc/apt/sources.list"
+
+- name: Add dotdeb repos
+  shell: "apt-get update"
+
+- name: Install nodejs
+  apt: pkg=nodejs-legacy state=latest update_cache=yes
+
+- name: Install npm
+  shell: curl --insecure https://www.npmjs.org/install.sh | bash

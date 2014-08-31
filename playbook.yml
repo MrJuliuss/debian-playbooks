@@ -1,5 +1,7 @@
 ---
   - hosts: all
+    sudo: true
+    user: vlad
     roles:
       - base
       - ntp
@@ -11,3 +13,4 @@
       - php-fpm
       - composer
       - zsh
+      - node
