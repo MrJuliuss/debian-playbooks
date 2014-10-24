@@ -1,0 +1,3 @@
+---
+- name: Install openvpn
+  apt: pkg=openvpn state=latest

@@ -1,6 +1,3 @@
 ---
-- name: Add ppa
-  apt_repository: repo='ppa:git-core/ppa'
-  
 - name: Install git
   apt: pkg=git-core state=latest

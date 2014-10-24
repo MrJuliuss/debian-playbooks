@@ -13,3 +13,4 @@
       - composer
       - zsh
       - node
+      - openvpn
