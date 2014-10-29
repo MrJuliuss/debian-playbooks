@@ -12,7 +12,9 @@ Playbooks for debian server
 - [apache](roles/apache)
 - [php (for apache)](roles/php)
 - [php-fpm](roles/php-fpm)
+- [nodejs](roles/node)
 - [ntp client](roles/ntp)
+- [openvpn](roles/openvpn)
 - [logwatch](roles/logwatch)
 - [fail2ban](roles/fail2ban)
 - [zsh](roles/zsh)
@@ -21,5 +23,3 @@ Playbooks for debian server
 
   ansible-playbook playbook.yml -i hosts --user username --ask-pass --ask-sudo-pass
 
-### Todo 
-- nodejs / npm
