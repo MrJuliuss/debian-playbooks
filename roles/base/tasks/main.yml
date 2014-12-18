@@ -16,3 +16,4 @@
     - rsync
     - httpie
     - wakeonlan
+    - backup-manager
