@@ -10,3 +10,6 @@
 
 - name: Install npm
   shell: curl --insecure https://www.npmjs.org/install.sh | bash
+  
+- name : Install forever
+  shell: npm install forever -g
