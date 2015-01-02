@@ -9,10 +9,10 @@
   apt: pkg=nodejs-legacy state=latest update_cache=yes
 
 - name: Install npm
-  shell: curl --insecure https://www.npmjs.org/install.sh | bash
+  shell: curl -L https://www.npmjs.org/install.sh | sh
   
 - name : Install forever
   shell: npm install forever -g
 
 - name : Install gulp
-  shell: npm gulp -g
+  shell: npm install gulp -g
