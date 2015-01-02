@@ -13,3 +13,6 @@
   
 - name : Install forever
   shell: npm install forever -g
+
+- name : Install gulp
+  shell: npm gulp -g
