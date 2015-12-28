@@ -1,15 +1,9 @@
 ---
-- name: Add node backport in sources.list
-  shell: "echo 'deb http://ftp.us.debian.org/debian jessie-backports main' >> /etc/apt/sources.list"
-
-- name: Add dotdeb repos
-  shell: "apt-get update"
-
 - name: Install nodejs
   apt: pkg=nodejs-legacy state=latest update_cache=yes
 
 - name: Install npm
-  shell: curl -L https://www.npmjs.org/install.sh | sh
+  apt: pkg=npm state=latest update_cache=yes
   
 - name : Install forever
   shell: npm install forever -g
