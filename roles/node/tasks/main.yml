@@ -1,6 +1,6 @@
 ---
 - name: Add node backport in sources.list
-  shell: "echo 'deb http://ftp.us.debian.org/debian wheezy-backports main' >> /etc/apt/sources.list"
+  shell: "echo 'deb http://ftp.us.debian.org/debian jessie-backports main' >> /etc/apt/sources.list"
 
 - name: Add dotdeb repos
   shell: "apt-get update"

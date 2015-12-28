@@ -1,4 +1,4 @@
-distribution_name: wheezy
-ntp_server: fr.pool.ntp.org
+distribution_name: jessie
+ntp_server: es.pool.ntp.org
 email_contact: root
 nginx_processes: 4

@@ -10,7 +10,7 @@
       - fail2ban
       - nginx
       - php-fpm
-      - composer
       - zsh
       - node
       - openvpn
+      - composer
