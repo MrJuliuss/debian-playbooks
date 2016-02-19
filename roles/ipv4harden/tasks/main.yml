@@ -1,0 +1,17 @@
+---  
+- name: ipv4-> rpfilter enable
+  sysctl: net.ipv4.conf.default.rp_filter value=1 sysctl_set=yes state=present
+  sysctl: net.ipv4.conf.all.rp_filter value=1 sysctl_set=yes state=present
+
+- name: ipv4-> syncookies enable
+  sysctl: net.ipv4.tcp_syncookies value=1 sysctl_set=yes state=present
+
+- name: ipv4-> ICMP redirects disable
+  sysctl: net.ipv4.conf.all.accept_redirects value=0 sysctl_set=yes state=present
+  sysctl: net.ipv4.conf.all.secure_redirects value=0 sysctl_set=yes state=present
+  sysctl: net.ipv4.conf.all.send_redirects value=0 sysctl_set=yes state=present
+  sysctl: net.ipv4.conf.all.accept_source_route value=0 sysctl_set=yes state=present
+
+- name: ipv4-> log martians
+  sysctl: net.ipv4.conf.all.log_martians value=1 sysctl_set=yes state=present reload=yes
+  

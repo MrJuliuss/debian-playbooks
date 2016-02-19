@@ -6,3 +6,5 @@
       - ntp
       - git
       - fail2ban
+      - ipv6disable
+      - ipv4harden

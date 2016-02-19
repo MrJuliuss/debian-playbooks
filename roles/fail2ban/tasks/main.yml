@@ -1,3 +1,13 @@
 ---
 - name: Install fail2ban
   apt: pkg=fail2ban state=latest
+  
+- name: Deploy custom jail.local
+  template: src=jail.local.j2 dest=/etc/fail2ban/jail.d/jail.local
+    owner: 'root'
+    group: 'root'
+    mode: '0640'
+
+- name: Restart fail2ban
+  notify: Restart fail2ban
+  

@@ -1,4 +1,6 @@
 distribution_name: jessie
-ntp_server: es.pool.ntp.org
-email_contact: root
+ntp_server_a: es.pool.ntp.org
+ntp_server_b: pool.ntp.org
+email_contact: root@locahost
 nginx_processes: 4
+safeips: 127.0.0.1
