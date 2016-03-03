@@ -3,11 +3,28 @@
   apt: pkg=fail2ban state=latest
   
 - name: Deploy custom jail.local
-  template: src=jail.local.j2 dest=/etc/fail2ban/jail.d/jail.local
-    owner: 'root'
-    group: 'root'
-    mode: '0640'
+  template: src=jail.local.j2 dest=/etc/fail2ban/jail.d/jail.local owner=root group=root mode=0640
+
+- name: Checking for apache2
+  stat: path=/etc/apache2/apache2.conf
+  register: apache_installed
+
+- name: Checking for mod_security
+  stat: path=/etc/modsecurity/modsecurity.conf
+  register: modsec_installed
+    
+- name: Deploy apache-modsecuriy.jail
+  template: src=apache-modsecurity.jail.j2 dest=/etc/fail2ban/jail.d/apache-modsecurity.jail owner=root group=root mode=0640
+  when: modsec_installed
+    
+- name: Deploy apache2.jail
+  template: src=apache2.jail.j2 dest=/etc/fail2ban/jail.d/apache2.jail owner=root group=root mode=0640
+  when: apache_installed
+  
+- name: Deploy wp-auth.jail
+  template: src=wp-auth.conf.j2 dest=/etc/fail2ban/filter.d/wp-auth.conf owner=root group=root mode=0640
+  when: apache_installed
 
 - name: Restart fail2ban
-  notify: Restart fail2ban
+  action: service name=fail2ban state=restarted enabled=yes
   

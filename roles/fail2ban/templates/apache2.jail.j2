@@ -7,3 +7,12 @@ enabled  = true
 
 [apache-overflows]
 enabled  = true
+
+[wp-auth]
+enabled = true  
+filter = wp-auth  
+action = iptables-multiport[name=NoAuthFailures, port="http,https"]  
+logpath = /var/log/apache2/*.access.log
+bantime = 1200  
+maxretry = 6
+

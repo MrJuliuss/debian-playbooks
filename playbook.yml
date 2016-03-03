@@ -5,6 +5,13 @@
       - base
       - ntp
       - git
-      - fail2ban
-      - ipv6disable
       - ipv4harden
+      - ipv6disable
+      - apache
+      - php-fpm
+      - php
+      - apache-fastcgi
+      - mysql
+      - modsecurity
+      - fail2ban
+      

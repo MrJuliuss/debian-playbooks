@@ -8,3 +8,7 @@
     - php5-mcrypt
     - php5-gd
     - php5-curl
+
+- name: Disable opcache (conflicts with chrooted env)
+  command: mv /etc/php5/fpm/conf.d/05-opcache.ini /etc/php5/fpm/conf.d/05-opcache.ini.disabled
+  notify: Restart php5-fpm
