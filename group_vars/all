@@ -4,3 +4,4 @@ ntp_server_b: pool.ntp.org
 email_contact: root@locahost
 nginx_processes: 4
 safeips: 127.0.0.1
+mysql_root_password: temporalMysqlRootPasswd
