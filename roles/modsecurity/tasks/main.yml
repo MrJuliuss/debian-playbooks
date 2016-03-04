@@ -10,6 +10,17 @@
   apt: pkg=libapache2-mod-security2 state=latest
   when: apache_installed
 
-- name: Enable rewrite mod
+- name: Enable modsecurity
   action: command a2enmod security2
   notify: Restart apache2
+  when: apache_installed
+  
+- name: Install evasive apache mod
+  apt: pkg=libapache2-mod-evasive state=latest
+  when: apache_installed
+
+- name: Enable modsecurity
+  action: command a2enmod evasive
+  notify: Restart apache2  
+  when: apache_installed
+

@@ -1,9 +1,12 @@
 ---
 - name: Add contrib & non free repositories
-  apt_repository: repo='deb http://ftp.es.debian.org/debian/ jessie-updates main contrib non-free' state=present
+  apt_repository: repo='deb http://ftp.es.debian.org/debian/ {{ distribution_name }} main contrib non-free' state=present
 
+- name: Update apt cache
+  apt: update_cache=yes
+  
 - name: Install libapache2-mod-fastcgi
-  apt: pkg=apache2 state=latest
+  apt: pkg=libapache2-mod-fastcgi state=latest
 
 - name: Enable fastcgi mod
   action: command a2enmod fastcgi
