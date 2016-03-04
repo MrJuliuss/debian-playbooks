@@ -3,6 +3,7 @@
     sudo: true
     roles:
       - base
+      - cron-apt
       - ntp
       - git
       - ipv4harden

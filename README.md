@@ -1,6 +1,6 @@
 ## Ansible playbooks
 
-Playbooks for debian server, be advised that I am learning ansible and that this playbook is experimental :)
+Playbooks for debian server
 
 ## Roles
 
@@ -18,7 +18,6 @@ Playbooks for debian server, be advised that I am learning ansible and that this
 - [logwatch](roles/logwatch)
 - [fail2ban](roles/fail2ban)
 - [zsh](roles/zsh)
-- [modsecurity](roles/modsecurity)
 
 ### Launch ansible : 
 
