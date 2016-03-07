@@ -4,8 +4,13 @@
 
 - name: Enable rewrite mod
   action: command a2enmod rewrite
-  notify: Restart apache2
 
-- name: Copy apache2 config file
-  template: src=apache2.conf.j2 dest=/etc/apache2/apache2.conf
+- name: Deploy restrictive security configuration
+  template: src=security-strict.conf.j2 dest=/etc/apache2/conf-available/security-strict.conf owner=root group=root mode=0640
+
+- name: Disable old security configuration
+  command: /usr/sbin/a2disconf security
+  
+- name: Enable new configuration
+  command: /usr/sbin/a2enconf security-strict
   notify: Restart apache2

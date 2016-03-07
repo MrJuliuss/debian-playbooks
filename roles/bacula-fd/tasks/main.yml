@@ -1,0 +1,6 @@
+---
+- name: Install bacula file daemon
+  apt: pkg=bacula-fd state=latest
+  
+- name: Deploy bacula configuration file
+  template: src=bacula-fd.conf.j2 dest=/etc/bacula/bacula-fd.conf owner=root group=root mode=0640

@@ -1,19 +1,21 @@
 ---
-- name: Add dotdeb key
-  apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
-
-- name: Add dotdeb default repos
-  apt_repository: repo='deb http://packages.dotdeb.org {{distribution_name}} all' state=present
-
-- name: Add dotdeb php repos
-  apt_repository: repo='deb http://packages.dotdeb.org {{distribution_name}}-php56 all' state=present
-
 - name: Install php packages
   apt: pkg={{ item }} state=latest
   with_items:
     - php5-cli
     - php5-fpm
-    - php5-mysql
+    - php5-mysqlnd
     - php5-mcrypt
     - php5-gd
     - php5-curl
+    - php5-imagick
+    - imagemagick
+
+- name: Checking for opcache
+  stat: path=/etc/php5/fpm/conf.d/05-opcache.ini
+  register: opcache_present
+    
+- name: Disable opcache (conflicts with chrooted env)
+  command: mv /etc/php5/fpm/conf.d/05-opcache.ini /etc/php5/fpm/conf.d/05-opcache.ini.disabled
+  when: opcache_present == true
+  notify: Restart php5-fpm

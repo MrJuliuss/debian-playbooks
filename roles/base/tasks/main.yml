@@ -15,5 +15,5 @@
     - ack-grep
     - rsync
     - httpie
-    - wakeonlan
+    - ncdu
     - backup-manager

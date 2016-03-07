@@ -1,0 +1,10 @@
+# WordPress brute force auth filter: /etc/fail2ban/filter.d/wp-auth.conf:
+# Block IPs trying to auth wp wordpress
+#
+# Matches e.g.
+# 12.34.33.22 - [07/Jun/2014:11:15:29] "POST /wp/wp-login.php HTTP/1.0" 200 4523
+
+[Definition]
+failregex = ^<HOST> .* "POST /wp-login.php .*
+ignoreregex = 
+

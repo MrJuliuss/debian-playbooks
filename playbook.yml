@@ -3,14 +3,17 @@
     sudo: true
     roles:
       - base
+      - cron-apt
       - ntp
       - git
-      - mysql
-      - logwatch
-      - fail2ban
-      - nginx
+      - ipv4harden
+      - ipv6disable
+      - apache
       - php-fpm
-      - composer
-      - zsh
-      - node
-      - openvpn
+      - php
+      - apache-fastcgi
+      - mysql
+      - modsecurity
+      - fail2ban
+      - bacula-fd
+      
