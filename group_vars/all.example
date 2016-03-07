@@ -1,7 +1,19 @@
 distribution_name: jessie
+
 ntp_server_a: es.pool.ntp.org
 ntp_server_b: pool.ntp.org
+
 email_contact: root@locahost
+
 nginx_processes: 4
+
 safeips: 127.0.0.1
+
 mysql_root_password: temporalMysqlRootPasswd
+
+bacula_director_fqdn: bacula.server.domain
+bacula_director_name: bacula-director.server
+bacula_director_pass: achoquedices
+bacula_monitor_name: bacula-monitor.server
+bacula_monitor_pass: achoquedices
+

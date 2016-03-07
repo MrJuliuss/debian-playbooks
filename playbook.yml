@@ -15,4 +15,5 @@
       - mysql
       - modsecurity
       - fail2ban
+      - bacula-fd
       
