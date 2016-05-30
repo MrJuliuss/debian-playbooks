@@ -1,3 +1,4 @@
 hosts
+playbook.retry
 *.kate-swp
 group_vars/all

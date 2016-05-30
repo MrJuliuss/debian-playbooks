@@ -16,4 +16,3 @@
     - rsync
     - httpie
     - ncdu
-    - backup-manager

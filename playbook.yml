@@ -1,5 +1,5 @@
 ---
-  - hosts: all
+  - hosts: fullapache2
     sudo: true
     roles:
       - base
@@ -17,3 +17,12 @@
       - fail2ban
       - bacula-fd
       
+  - hosts: base
+    sudo: true
+    roles:
+      - base
+      - cron-apt
+      - ntp
+      - git
+      - ipv4harden
+      - ipv6disable
