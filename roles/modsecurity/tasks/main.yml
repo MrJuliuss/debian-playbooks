@@ -19,8 +19,11 @@
   apt: pkg=libapache2-mod-evasive state=latest
   when: apache_installed.stat.exists == True
 
+- name: Copy default ruleset
+  copy: src=/etc/modsecurity/modsecurity.conf-recommended dest=/etc/modsecurity/modsecurity.conf
+  when: apache_installed.stat.exists == True
+
 - name: Enable modsecurity
   action: command a2enmod evasive
   notify: Restart apache2  
   when: apache_installed.stat.exists == True
-
