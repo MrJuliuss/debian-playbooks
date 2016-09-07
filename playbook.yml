@@ -1,4 +1,14 @@
 ---
+  - hosts: minimal
+    sudo: true
+    roles:
+      - base
+      - cron-apt
+      - ntp
+      - git
+      - ipv4harden
+      - ipv6disable
+
   - hosts: fullapache2
     sudo: true
     roles:
@@ -10,14 +20,12 @@
       - ipv6disable
       - apache
       - php-fpm
-      - php
       - apache-fastcgi
       - mysql
       - modsecurity
       - fail2ban
-      - bacula-fd
       
-  - hosts: base
+  - hosts: apache2simple
     sudo: true
     roles:
       - base
@@ -26,3 +34,8 @@
       - git
       - ipv4harden
       - ipv6disable
+      - fail2ban
+      - php
+      - mysql
+      - apache
+

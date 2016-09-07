@@ -15,15 +15,15 @@
     
 - name: Deploy apache-modsecuriy.jail
   template: src=apache-modsecurity.jail.j2 dest=/etc/fail2ban/jail.d/apache-modsecurity.jail owner=root group=root mode=0640
-  when: modsec_installed
+  when: modsec_installed.stat.exists == True
     
 - name: Deploy apache2.jail
   template: src=apache2.jail.j2 dest=/etc/fail2ban/jail.d/apache2.jail owner=root group=root mode=0640
-  when: apache_installed
+  when: apache_installed.stat.exists == True
 
 - name: Deploy wp-auth.jail
   template: src=wp-auth.conf.j2 dest=/etc/fail2ban/filter.d/wp-auth.conf owner=root group=root mode=0640
-  when: apache_installed
+  when: apache_installed.stat.exists == True
 
 - name: Restart fail2ban
   action: service name=fail2ban state=restarted enabled=yes
