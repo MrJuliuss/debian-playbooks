@@ -10,12 +10,4 @@
     - php5-curl
     - php5-imagick
     - imagemagick
-
-- name: Checking for opcache
-  stat: path=/etc/php5/fpm/conf.d/05-opcache.ini
-  register: opcache_present
-    
-- name: Disable opcache (conflicts with chrooted env)
-  command: mv /etc/php5/fpm/conf.d/05-opcache.ini /etc/php5/fpm/conf.d/05-opcache.ini.disabled
-  when: opcache_present == true
-  notify: Restart php5-fpm
+    - php-apcu
