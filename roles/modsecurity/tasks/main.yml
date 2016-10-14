@@ -1,0 +1,24 @@
+---
+- name: Install modsecurity core ruleset
+  apt: pkg=modsecurity-crs state=latest
+
+- name: Checking for apache2
+  stat: path=/etc/apache2/apache2.conf
+  register: apache_installed
+
+- name: Install modsecurity apache mod
+  apt: pkg=libapache2-mod-security2 state=latest
+  when: apache_installed.stat.exists == True
+
+- name: Install evasive apache mod
+  apt: pkg=libapache2-mod-evasive state=latest
+  when: apache_installed.stat.exists == True
+
+- name: Copy default ruleset
+  shell: cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+  when: apache_installed.stat.exists == True
+
+- name: Enable modsecurity
+  action: command a2enmod evasive
+  notify: Restart apache2  
+  when: apache_installed.stat.exists == True

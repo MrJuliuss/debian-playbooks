@@ -1,16 +1,41 @@
 ---
-  - hosts: all
+  - hosts: minimal
     sudo: true
     roles:
       - base
+      - cron-apt
       - ntp
       - git
-      - mysql
-      - logwatch
-      - fail2ban
-      - nginx
+      - ipv4harden
+      - ipv6disable
+
+  - hosts: fullapache2
+    sudo: true
+    roles:
+      - base
+      - cron-apt
+      - ntp
+      - git
+      - ipv4harden
+      - ipv6disable
+      - apache
       - php-fpm
-      - composer
-      - zsh
-      - node
-      - openvpn
+      - apache-fastcgi
+      - mysql
+      - modsecurity
+      - fail2ban
+      
+  - hosts: apache2simple
+    sudo: true
+    roles:
+      - base
+      - cron-apt
+      - ntp
+      - git
+      - ipv4harden
+      - ipv6disable
+      - fail2ban
+      - php
+      - mysql
+      - apache
+

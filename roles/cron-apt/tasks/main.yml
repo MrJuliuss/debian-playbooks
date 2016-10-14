@@ -1,0 +1,14 @@
+---
+- name: Install cron-apt
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - cron-apt
+
+- name: Configure security repository 
+  template: src=list-security.j2 dest=/etc/apt/sources.list.d/security.list owner=root group=root mode=0640
+    
+- name: Configure security repository options
+  template: src=config-security.j2 dest=/etc/cron-apt/config.d/5-security owner=root group=root mode=0640
+
+- name: Configure security repository actions
+  template: src=action-security.j2 dest=/etc/cron-apt/action.d/5-security owner=root group=root mode=0640

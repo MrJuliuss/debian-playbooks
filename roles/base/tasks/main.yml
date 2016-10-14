@@ -1,4 +1,7 @@
 ---
+- name: Ensure aptitude is installed
+  raw: apt-get update; apt-get install aptitude
+
 - name: Upgrade distribution
   apt: update_cache=yes upgrade=yes cache_valid_time=1800
 
@@ -15,5 +18,6 @@
     - ack-grep
     - rsync
     - httpie
-    - wakeonlan
-    - backup-manager
+    - ncdu
+    - nano
+

@@ -1,9 +1,13 @@
 ---
-- name: Add dotdeb key
-  apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
-
-- name: Add dotdeb repos
-  apt_repository: repo='deb http://packages.dotdeb.org {{distribution_name}}-php55 all' state=present
-
-- name: Install php
-  apt: pkg=libapache2-mod-php5 state=latest update_cache=yes
+- name: Install php packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - php5-cli
+    - libapache2-mod-php5
+    - php5-mysqlnd
+    - php5-mcrypt
+    - php5-gd
+    - php5-curl
+    - php5-imagick
+    - imagemagick
+    - php5-apcu

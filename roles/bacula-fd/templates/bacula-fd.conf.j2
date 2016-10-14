@@ -1,0 +1,32 @@
+
+
+Director {
+  Name = {{ bacula_director_name }}
+  Password = "{{ bacula_director_pass }}"
+}
+
+# Restricted Director, used by tray-monitor to get the
+#   status of the file daemon
+
+Director {
+  Name = {{ bacula_monitor_name }}
+  Password = "{{ bacula_monitor_pass }}"
+  Monitor = yes
+}
+
+# "Global" File daemon configuration specifications
+FileDaemon {                          # this is me
+  Name = {{ ansible_fqdn }}-fd
+  FDport = 9102                  # where we listen for the director
+  WorkingDirectory = /var/lib/bacula
+  Pid Directory = /var/run/bacula
+  Maximum Concurrent Jobs = 20
+  Heartbeat Interval = 60
+  FDAddress = 0.0.0.0
+}
+
+# Send all messages except skipped files back to Director
+Messages {
+  Name = Standard
+  director = {{ bacula_director_fqdn }} = all, !skipped, !restored
+  append = "/var/log/bacula-job-debug.log" = all
