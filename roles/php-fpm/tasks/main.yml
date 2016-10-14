@@ -10,4 +10,4 @@
     - php5-curl
     - php5-imagick
     - imagemagick
-    - php-apcu
+    - php5-apcu
