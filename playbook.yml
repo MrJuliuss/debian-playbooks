@@ -1,16 +1,8 @@
 ---
   - hosts: all
-    sudo: true
+    remote_user: root
     roles:
       - base
       - ntp
       - git
-      - mysql
-      - logwatch
-      - fail2ban
-      - nginx
-      - php-fpm
-      - composer
       - zsh
-      - node
-      - openvpn
