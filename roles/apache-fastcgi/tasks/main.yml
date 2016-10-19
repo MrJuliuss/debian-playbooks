@@ -5,11 +5,11 @@
 
 - name: Add contrib & non free repositories
   apt_repository: repo='deb http://ftp.es.debian.org/debian/ {{ distribution_name }} main contrib non-free' state=present
-  when: repos_present == false
+#  when: repos_present == false
   
 - name: Update apt cache
   apt: update_cache=yes
-  when: repos_present == false
+#  when: repos_present == false
   
 - name: Install libapache2-mod-fastcgi
   apt: pkg=libapache2-mod-fastcgi state=latest
