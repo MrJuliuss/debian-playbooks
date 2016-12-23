@@ -21,5 +21,14 @@ Playbooks for debian server
 
 ### Launch ansible : 
 
-  ansible-playbook playbook.yml -i hosts --user username --ask-pass --ask-sudo-pass
+```
+ansible-playbook playbook.yml -i hosts --user username --ask-pass --ask-sudo-pass
+```
 
+### Launch specific role in a host:
+
+```
+  ansible-playbook run_role.yml  -i 'hostname1,[hostname2, ...]' -e "ROLE={rolename}" --user {username} [--ask-pass] [--become] [--ask-become-pass]
+```
+
+Please note that at least one comma is required inside the -i arg. Example: `-i '192.168.1.10,'`

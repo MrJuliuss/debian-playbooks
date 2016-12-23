@@ -1,0 +1,6 @@
+---
+- name: Run rol from command line args
+  hosts: all
+  roles:
+  - { role: '{{ROLE}}' }
+
