@@ -1,12 +1,11 @@
 ## Basics packages
 
-- vim
-- wget
+- sudo
 - curl
 - python-pycurl
-- screen
 - tree
 - htop
 - ack-grep
-- rsync
 - httpie
+- wakeonlan
+- backup-manager
