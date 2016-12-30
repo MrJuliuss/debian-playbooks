@@ -5,15 +5,12 @@
 - name: Install base packages
   apt: pkg={{ item }} state=latest
   with_items:
-    - vim
-    - wget
+    - sudo
     - curl
     - python-pycurl
-    - screen
     - tree
     - htop
     - ack-grep
-    - rsync
     - httpie
     - wakeonlan
     - backup-manager
