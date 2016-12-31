@@ -3,7 +3,15 @@
     remote_user: root
     sudo: true
     roles:
-      - base
-      - ntp
-      - git
-      - zsh
+      - role: base
+        tags: "base"
+      - role: ntp
+        tags: "ntp"
+      - role: git
+        tags: "git"
+      - role: zsh
+        tags: "zsh"
+      - role: iptables-persistent
+        tags: "iptables-persistent"
+      - role: fail2ban
+        tags: "fail2ban"
