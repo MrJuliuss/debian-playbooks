@@ -1,18 +1,22 @@
----
-- name: Add node backport in sources.list
-  shell: "echo 'deb http://ftp.us.debian.org/debian wheezy-backports main' >> /etc/apt/sources.list"
+- name: Check if node is already installed
+  command: node --version
+  ignore_errors: yes
+  register: node_is_installed
 
-- name: Add dotdeb repos
-  shell: "apt-get update"
+- name: Add nodejs repository
+  shell: curl --silent --location https://deb.nodesource.com/setup_6.x | bash -
+  when: node_is_installed.rc != 0
 
 - name: Install nodejs
-  apt: pkg=nodejs-legacy state=latest update_cache=yes
+  apt:
+    name: nodejs
+    update_cache: yes
+    cache_valid_time: 3600
+  when: node_is_installed.rc != 0
 
-- name: Install npm
-  shell: curl -L https://www.npmjs.org/install.sh | sh
-  
-- name : Install forever
-  shell: npm install forever -g
-
-- name : Install gulp
-  shell: npm install gulp -g
+- name: Install some nodejs tools (global)
+  npm: name={{ item }} global=yes
+  with_items:
+    - forever
+    - gulp
+    - npm

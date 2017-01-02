@@ -17,3 +17,5 @@
         tags: "fail2ban"
       - role: nginx
         tags: "nginx"
+      - role: node
+        tags: "node"
