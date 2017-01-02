@@ -1,4 +1,4 @@
-distribution_name: jessie
 ntp_server: fr.pool.ntp.org
-email_contact: root
 nginx_processes: 4
+ssh_port: 22
+debian_version: jessie

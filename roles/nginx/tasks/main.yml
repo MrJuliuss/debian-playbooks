@@ -5,7 +5,7 @@
 
 - name: Add repository
   apt_repository:
-    repo: "deb http://nginx.org/packages/mainline/debian/ jessie nginx"
+    repo: "deb http://nginx.org/packages/mainline/debian/ {{debian_version}} nginx"
   when: nginx_key_added.changed
 
 - name: Install Nginx
