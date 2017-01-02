@@ -1,0 +1,13 @@
+---
+- name: install mariadb gpg key
+  apt_key: url='http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x{{ mariadb.gpg_key_id }}' state=present
+
+- name: add mariadb deb repository
+  apt_repository: repo='deb http://{{ mariadb.mirror }}/mariadb/repo/{{ mariadb.series_version }}/debian {{ debian_version }} main' state=present
+
+- name: install mariadb packages
+  apt: pkg={{ item }} state=latest update_cache=yes force=yes
+  with_items:
+      - mariadb-server
+      - mytop
+  notify: restart mariadb

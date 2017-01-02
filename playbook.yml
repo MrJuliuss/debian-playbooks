@@ -21,3 +21,5 @@
         tags: "node"
       - role: php-fpm
         tags: "php-fpm"
+      - role: mariadb
+        tags: "mariadb"
