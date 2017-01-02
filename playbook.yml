@@ -15,3 +15,5 @@
         tags: "iptables-persistent"
       - role: fail2ban
         tags: "fail2ban"
+      - role: nginx
+        tags: "nginx"

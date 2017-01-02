@@ -1,7 +1,15 @@
---- 
-- name: Install nginx
-  apt: pkg=nginx state=latest
+- name: Add key for repository
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key
+  register: nginx_key_added
 
-- name: Copy nginx config file
-  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
-  notify: Reload nginx
+- name: Add repository
+  apt_repository:
+    repo: "deb http://nginx.org/packages/mainline/debian/ jessie nginx"
+  when: nginx_key_added.changed
+
+- name: Install Nginx
+  apt:
+    name: nginx
+    update_cache: yes
+    cache_valid_time: 3600
