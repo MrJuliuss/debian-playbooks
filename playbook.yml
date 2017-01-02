@@ -19,3 +19,5 @@
         tags: "nginx"
       - role: node
         tags: "node"
+      - role: php-fpm
+        tags: "php-fpm"

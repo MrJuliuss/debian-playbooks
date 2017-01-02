@@ -1,19 +1,19 @@
 ---
-- name: Add dotdeb key
+- name: APT | Add DotDeb jessie repository
+  apt_repository: repo='{{item}}'
+  with_items:
+    - deb http://packages.dotdeb.org jessie all
+    - deb-src http://packages.dotdeb.org jessie all
+
+- name: APT | Install DotDeb key
   apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
 
-- name: Add dotdeb default repos
-  apt_repository: repo='deb http://packages.dotdeb.org {{distribution_name}} all' state=present
-
-- name: Add dotdeb php repos
-  apt_repository: repo='deb http://packages.dotdeb.org {{distribution_name}}-php56 all' state=present
-
-- name: Install php packages
-  apt: pkg={{ item }} state=latest
+- name: Install php-fpm and deps
+  apt: pkg={{ item }} force=yes state=latest
   with_items:
-    - php5-cli
-    - php5-fpm
-    - php5-mysql
-    - php5-mcrypt
-    - php5-gd
-    - php5-curl
+    - php7.0
+    - php7.0-fpm
+    - php7.0-cli
+    - php7.0-mysql
+    - php7.0-gd
+    - php7.0-curl
