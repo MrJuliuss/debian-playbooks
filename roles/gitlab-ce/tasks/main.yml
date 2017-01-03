@@ -1,0 +1,25 @@
+---
+- name: install gitlab-ce dependencies packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - curl
+    - openssh-server
+    - ca-certificates
+    - postfix
+
+- name: get gitlab-ce installer
+  get_url: url=https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh dest=/tmp/install_gitlab-ce.sh mode="a+x"
+
+- name: install gitlab-ce
+  shell: /tmp/install_gitlab-ce.sh
+
+- name: install gitlab-ce package
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - gitlab-ce
+
+- name: configure gitlab-ce
+  shell: gitlab-ctl reconfigure
+
+- name: show gitlab-ce credentials
+  debug: msg="Default credientials are root / W35H 8r0"
