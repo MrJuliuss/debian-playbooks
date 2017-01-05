@@ -21,6 +21,8 @@
         tags: "node"
       - role: php-fpm
         tags: "php-fpm"
+      - role: composer
+        tags: "composer"
       - role: mariadb
         tags: "mariadb"
       - role: certbot
