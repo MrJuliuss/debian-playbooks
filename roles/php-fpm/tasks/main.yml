@@ -18,3 +18,4 @@
     - php7.0-gd
     - php7.0-curl
     - php7.0-xml
+    - php7.0-mbstring

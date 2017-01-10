@@ -29,3 +29,7 @@
         tags: "certbot"
       - role: gitlab-ce
         tags: "gitlab-ce"
+      - role: docker
+        tags: "docker"
+      - role: mysecureshell
+        tags: "mysecureshell"
