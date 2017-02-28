@@ -1,0 +1,38 @@
+---
+
+- name: Install deps
+  apt: name={{ item }} state=present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - python-setuptools
+
+- name: Install docker GPG key
+  apt_key: keyserver=hkp://ha.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D state=present
+
+- name: Add docker apt repository
+  apt_repository: repo="deb https://apt.dockerproject.org/repo {{ ansible_distribution|lower }}-{{ ansible_distribution_release }} main" state=present
+
+- name: Update apt-cache
+  apt: update_cache=yes
+
+- name: Purge the old repo if it exists
+  apt: name={{ item }} purge=yes
+  with_items:
+    - "lxc-docker*"
+    - "docker.io*"
+  ignore_errors: yes
+
+- name: Install docker package
+  apt: name=docker-engine state=present
+  notify: Start Docker
+
+- name: Installing dependencies
+  easy_install:
+    name: pip
+
+- name: Installing docker compose
+  pip:
+    name: docker-compose
+    version: "1.9"
+    state: present
