@@ -1,0 +1,11 @@
+---
+- name: add certbot deb repository
+  apt_repository: repo='deb http://ftp.es.debian.org/debian {{ distribution_name }}-backports main' state=present
+
+- name: install certbot package
+  apt: name={{ item }} state=latest default_release={{ distribution_name }}-backports update_cache=yes
+  with_items:
+    - certbot
+
+- name: install certbot renew daily task
+  cron: name="certbot renew" hour="8" weekday="1" job="certbot renew --quiet"
