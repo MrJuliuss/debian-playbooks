@@ -1,5 +1,7 @@
 ---
+
   - hosts: minimal
+    remote_user: root
     sudo: true
     roles:
       - base
@@ -10,6 +12,7 @@
       - ipv6disable
 
   - hosts: fullapache2
+    remote_user: root
     sudo: true
     roles:
       - base
@@ -26,6 +29,7 @@
       - fail2ban
       
   - hosts: apache2simple
+    remote_user: root
     sudo: true
     roles:
       - base

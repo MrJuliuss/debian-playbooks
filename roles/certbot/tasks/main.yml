@@ -7,5 +7,5 @@
   with_items:
     - certbot
 
-- name: install certbot renew daily task
+- name: install certbot renew weekly task
   cron: name="certbot renew" hour="8" weekday="1" job="certbot renew --quiet"
