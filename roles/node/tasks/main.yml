@@ -1,9 +1,22 @@
 ---
-- name: Install nodejs
-  apt: pkg=nodejs-legacy state=latest update_cache=yes
+- name: Checking for previously added repositories
+  stat: path=/etc/apt/sources.list.d/deb_nodesource_com_node_6_x.list
+  register: repos_nodesource_present
 
-- name: Install npm
-  apt: pkg=npm state=latest update_cache=yes
+- name: Add nodesource apt keychain
+  apt_key: url='https://deb.nodesource.com/gpgkey/nodesource.gpg.key' state='present'
+  when: repos_nodesource_present.stat.exists == false
+
+- name: Installing repositories - we need https transport
+  apt: pkg=apt-transport-https state=latest
+  when: repos_nodesource_present.stat.exists == false
+
+- name: Add nodesource repository
+  apt_repository: repo='deb https://deb.nodesource.com/node_6.x/ {{ distribution_name }} main ' state=present
+  when: repos_nodesource_present.stat.exists == false
+
+- name: Install nodejs
+  apt: pkg=nodejs state=latest update_cache=yes
   
 - name : Install forever
   shell: npm install forever -g
