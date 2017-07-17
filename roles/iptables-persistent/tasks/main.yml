@@ -1,0 +1,9 @@
+---
+- name: Install iptables-persistent
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - iptables-persistent
+
+- name: Copy iptables template rules over to /etc/iptables
+  template: src=iptables.j2 dest=/etc/iptables/rules.v4
+  notify: restart netfilter-persistent
