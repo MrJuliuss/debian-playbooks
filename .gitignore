@@ -4,3 +4,4 @@ playbook-custom.yml
 *.kate-swp
 group_vars/all
 custom*
+.directory
