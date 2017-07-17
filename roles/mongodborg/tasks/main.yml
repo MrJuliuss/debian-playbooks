@@ -1,0 +1,25 @@
+--- 
+- name: Checking for previously added repositories
+  stat: path=/etc/apt/sources.list.d/repo_mongodb_org_apt_debian.list
+  register: repos_mongodborg_present
+
+- name: Add nodesource apt keychain
+  apt_key: keyserver='keyserver.ubuntu.com' id='0C49F3730359A14518585931BC711F9BA15703C6' state='present'
+  when: repos_mongodborg_present.stat.exists == false
+
+- name: Add mongodb.org repository (jessie/3.4)
+  apt_repository: repo='deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main ' state=present
+  when: repos_mongodborg_present.stat.exists == false
+
+- name: Install mongodb & tools from mongodb.org (jessie) repositories
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - mongodb-org
+    - mongodb-org-server
+    - mongodb-org-tools
+
+- name: Creating /var/backups/mongos
+  file: path='/var/backups/mongos' state=directory mode=0750 owner=root group=root
+
+- name: Creating daily backup for mongos
+  cron: name='Mongobackups' minute='0' hour='1' job='cd /var/backups/mongos; for port in $(netstat -lnpt | grep mongod | tr -s [:blank:] | cut -f 4 -d \' \' | cut -f 2 -d \':\'); do  mkdir mongo-$port-$(date +"%y%m%d");  cd mongo-$port-$(date +"%y%m%d");  mongodump -h 127.0.0.1 --port $port;  cd ..;  tar -zcf mongo-$port-$(date +"%y%m%d").tar.gz mongo-$port-$(date +"%y%m%d");  rm -rf mongo-$port-$(date +"%y%m%d"); done ; chmod 600 /var/backups/mongos/*; find /var/backups/mongos -mtime +7 -exec rm {} \;'
