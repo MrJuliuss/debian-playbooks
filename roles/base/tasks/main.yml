@@ -20,4 +20,6 @@
     - httpie
     - ncdu
     - nano
+    - net-tools
+    - iproute2
 
