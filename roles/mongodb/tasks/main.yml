@@ -11,3 +11,6 @@
 - name: Creating daily backup for mongos
   cron: name='Mongobackups' minute='0' hour='1' job='cd /var/backups/mongos; for port in $(netstat -lnpt | grep mongod | tr -s [:blank:] | cut -f 4 -d \' \' | cut -f 2 -d \':\'); do  mkdir mongo-$port-$(date +"%y%m%d");  cd mongo-$port-$(date +"%y%m%d");  mongodump -h 127.0.0.1 --port $port;  cd ..;  tar -zcf mongo-$port-$(date +"%y%m%d").tar.gz mongo-$port-$(date +"%y%m%d");  rm -rf mongo-$port-$(date +"%y%m%d"); done ; chmod 600 /var/backups/mongos/*; find /var/backups/mongos -mtime +7 -exec rm {} \;'
 
+- name: Enabling mongodb server
+  service: name='mongod' state='started' enabled='yes'
+
