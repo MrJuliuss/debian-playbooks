@@ -19,6 +19,8 @@ Playbooks for debian server
 - [fail2ban](roles/fail2ban)
 - [zsh](roles/zsh)
 
+(Check for more on the [roles](roles) directory)
+
 ### Launch ansible : 
 
 ```
