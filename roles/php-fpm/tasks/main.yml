@@ -2,12 +2,12 @@
 - name: Install php packages
   apt: pkg={{ item }} state=latest
   with_items:
-    - php5-cli
-    - php5-fpm
-    - php5-mysqlnd
-    - php5-mcrypt
-    - php5-gd
-    - php5-curl
-    - php5-imagick
+    - php-cli
+    - php-fpm
+    - php-mysqlnd
+    - php-mcrypt
+    - php-gd
+    - php-curl
+    - php-imagick
     - imagemagick
-    - php5-apcu
+    - php-apcu

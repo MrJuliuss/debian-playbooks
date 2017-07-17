@@ -1,4 +1,4 @@
-distribution_name: jessie
+distribution_name: stretch
 
 ntp_server_a: es.pool.ntp.org
 ntp_server_b: pool.ntp.org
