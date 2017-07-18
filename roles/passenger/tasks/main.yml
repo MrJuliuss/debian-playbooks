@@ -1,26 +1,32 @@
 --- 
-#- name: Checking for previously added repositories
-#  stat: path=/etc/apt/sources.list.d/repo_mongodb_org_apt_debian.list
-#  register: repos_passenger_present
+- name: Checking for previously added repositories
+  stat: path=/etc/apt/sources.list.d/oss-binaries_phusionpassenger_com_apt_passenger.list
+  register: repos_passenger_present
 
-#- name: Add phusionpassenger apt keychain
-#  apt_key: keyserver='keyserver.ubuntu.com' id='561F9B9CAC40B2F7' state='present'
-#  when: repos_passenger_present.stat.exists == false
+- name: Add phusionpassenger apt keychain
+  apt_key: keyserver='keyserver.ubuntu.com' id='561F9B9CAC40B2F7' state='present'
+  when: repos_passenger_present.stat.exists == false
 
-#- name: Installing apt-transport-https
-#  apt: pkg={{ item }} state=latest
-#  with_items:  
-#    - apt-transport-https
-#    - ca-certificates
-#  when: repos_passenger_present.stat.exists == false
+- name: Installing apt-transport-https
+  apt: pkg={{ item }} state=latest
+  with_items:  
+    - apt-transport-https
+    - ca-certificates
+  when: repos_passenger_present.stat.exists == false
 
-#- name: Add phusionpassenger.com repository (jessie)
-#  apt_repository: repo='deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main ' state=present
-#  when: repos_passenger_present.stat.exists == false
+- name: Add phusionpassenger.com repository (jessie)
+  apt_repository: repo='deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main ' state=present
+  when: repos_passenger_present.stat.exists == false
 
-- name: Install passenger & nginx-extras
+- name: Install passenger
   apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
     - passenger
-    - nginx-extras
 
+#- name: Install support files to enable nginx recompiling (for passenger)
+#  apt: pkg={{ item }} state=latest update_cache=yes
+#  with_items:
+#    - build-essential
+#    - libcurl4-openssl-dev
+#    - libssl-dev
+#    - zlib1g-dev
