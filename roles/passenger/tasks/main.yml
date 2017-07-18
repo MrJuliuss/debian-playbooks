@@ -30,3 +30,13 @@
 #    - libcurl4-openssl-dev
 #    - libssl-dev
 #    - zlib1g-dev
+
+- name: Checking for apache2
+  stat: path=/etc/apache2/
+  register: apache2_present
+
+- name: Install apache2-dev
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - apache2-dev
+  when: apache2_present.stat.exists == true
