@@ -14,8 +14,8 @@
     - ca-certificates
   when: repos_passenger_present.stat.exists == false
 
-- name: Add phusionpassenger.com repository (jessie)
-  apt_repository: repo='deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main ' state=present
+- name: Add phusionpassenger.com repository
+  apt_repository: repo='deb https://oss-binaries.phusionpassenger.com/apt/passenger stretch main ' state=present
   when: repos_passenger_present.stat.exists == false
 
 - name: Install passenger
@@ -36,8 +36,19 @@
   register: apache2_present
 
 - name: Install apache2-dev and libapache2-mod-passenger
-  apt: pkg={{ item }} state=latest update_cache=yes
+  apt: pkg={{ item }} state=latest
   with_items:
     - apache2-dev
     - libapache2-mod-passenger
   when: apache2_present.stat.exists == true
+
+- name: Checking for nginx
+  stat: path=/etc/nginx/
+  register: nginx_present
+
+- name: Install nginx-mod-passenger
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - libnginx-mod-http-passenger
+  when: nginx_present.stat.exists == true
+
