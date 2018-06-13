@@ -1,18 +1,18 @@
 ---
-- name: Install MySql
+- name: Install mariadb
   apt: pkg={{ item }} state=latest
   with_items:
-    - mysql-server
-    - mysql-client
-    - libmysqlclient-dev
+    - mariadb-server
+    - mariadb-client
+    - libmariadbclient-dev
     - python-mysqldb
-- name: Start the MySQL service
+- name: Start the mariadb service
   sudo: yes
   service: 
-    name: mysql 
+    name: mariadb
     state: started
     enabled: true
-- name: update mysql root password for all root accounts
+- name: update mariadb root password for all root accounts
   sudo: yes
   mysql_user: 
     name: root 
