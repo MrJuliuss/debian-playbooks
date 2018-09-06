@@ -1,6 +1,6 @@
 ---
 - name: Checking for previously added repositories
-  stat: path=/etc/apt/sources.list.d/deb_nodesource_com_node_6_x.list
+  stat: path=/etc/apt/sources.list.d/deb_nodesource_com_node_8_x.list
   register: repos_nodesource_present
 
 - name: Add nodesource apt keychain
@@ -12,7 +12,7 @@
   when: repos_nodesource_present.stat.exists == false
 
 - name: Add nodesource repository
-  apt_repository: repo='deb https://deb.nodesource.com/node_6.x/ {{ distribution_name }} main ' state=present
+  apt_repository: repo='deb https://deb.nodesource.com/node_8.x/ {{ distribution_name }} main ' state=present
   when: repos_nodesource_present.stat.exists == false
 
 - name: Install nodejs

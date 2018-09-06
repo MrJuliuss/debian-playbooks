@@ -4,11 +4,11 @@
   register: repos_mongodborg_present
 
 - name: Add nodesource apt keychain
-  apt_key: keyserver='keyserver.ubuntu.com' id='0C49F3730359A14518585931BC711F9BA15703C6' state='present'
+  apt_key: keyserver='keyserver.ubuntu.com' id='2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5' state='present'
   when: repos_mongodborg_present.stat.exists == false
 
-- name: Add mongodb.org repository (jessie/3.4)
-  apt_repository: repo='deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main ' state=present
+- name: Add mongodb.org repository (stretch/3.6)
+  apt_repository: repo='deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main ' state=present
   when: repos_mongodborg_present.stat.exists == false
 
 - name: Install mongodb & tools from mongodb.org (jessie) repositories
