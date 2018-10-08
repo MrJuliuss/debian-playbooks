@@ -31,5 +31,3 @@
         tags: "gitlab-ce"
       - role: docker
         tags: "docker"
-      - role: mysecureshell
-        tags: "mysecureshell"

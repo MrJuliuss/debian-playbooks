@@ -9,8 +9,6 @@ Playbooks for debian server
 - [composer](roles/composer)
 - [mysql](roles/mysql)
 - [nginx](roles/nginx)
-- [apache](roles/apache)
-- [php (for apache)](roles/php)
 - [php-fpm](roles/php-fpm)
 - [nodejs](roles/node)
 - [ntp client](roles/ntp)

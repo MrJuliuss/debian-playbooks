@@ -1,21 +1,12 @@
 ---
-- name: APT | Add DotDeb repository
-  apt_repository: repo='{{item}}'
-  with_items:
-    - deb http://packages.dotdeb.org {{debian_version}} all
-    - deb-src http://packages.dotdeb.org {{debian_version}} all
-
-- name: APT | Install DotDeb key
-  apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
-
 - name: Install php-fpm and deps
   apt: pkg={{ item }} force=yes state=latest
   with_items:
-    - php7.0
-    - php7.0-fpm
-    - php7.0-cli
-    - php7.0-mysql
-    - php7.0-gd
-    - php7.0-curl
-    - php7.0-xml
-    - php7.0-mbstring
+    - php7.2
+    - php7.2-fpm
+    - php7.2-cli
+    - php7.2-mysql
+    - php7.2-gd
+    - php7.2-curl
+    - php7.2-xml
+    - php7.2-mbstring

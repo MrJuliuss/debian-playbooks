@@ -1,9 +1,0 @@
----
-- name: start gitlab-ce
-  shell: sudo gitlab-ctl start
-
-- name: stop gitlab-ce
-  shell: sudo gitlab-ctl stop
-
-- name: restart gitlab-ce
-  shell: sudo gitlab-ctl restart

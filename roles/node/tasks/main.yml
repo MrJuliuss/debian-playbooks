@@ -4,7 +4,7 @@
   register: node_is_installed
 
 - name: Add nodejs repository
-  shell: curl --silent --location https://deb.nodesource.com/setup_6.x | bash -
+  shell: curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
   when: node_is_installed.rc != 0
 
 - name: Install nodejs
