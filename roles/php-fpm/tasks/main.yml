@@ -1,4 +1,12 @@
 ---
+- name: Add key for repository
+  apt_key:
+    url: https://packages.sury.org/php/apt.gpg
+
+- name: Add repository
+  apt_repository:
+    repo: "deb https://packages.sury.org/php/ {{debian_version}} main"
+
 - name: Install php-fpm and deps
   apt: pkg={{ item }} force=yes state=latest
   with_items:

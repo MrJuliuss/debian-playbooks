@@ -9,5 +9,4 @@
   apt: pkg={{ item }} state=latest update_cache=yes force=yes
   with_items:
       - mariadb-server
-      - mytop
   notify: restart mariadb

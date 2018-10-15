@@ -1,12 +1,10 @@
 - name: Add key for repository
   apt_key:
     url: http://nginx.org/keys/nginx_signing.key
-  register: nginx_key_added
 
 - name: Add repository
   apt_repository:
     repo: "deb http://nginx.org/packages/mainline/debian/ {{debian_version}} nginx"
-  when: nginx_key_added.changed
 
 - name: Install Nginx
   apt:

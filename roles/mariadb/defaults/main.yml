@@ -1,4 +1,4 @@
 mariadb:
-    gpg_key_id: cbcb082a1bb943db
-    series_version: '10.1'
-    mirror: ftp.igh.cnrs.fr/pub
+    gpg_key_id: F1656F24C74CD1D8
+    series_version: '10.3'
+    mirror: ftp.utexas.edu

@@ -27,7 +27,5 @@
         tags: "mariadb"
       - role: certbot
         tags: "certbot"
-      - role: gitlab-ce
-        tags: "gitlab-ce"
       - role: docker
         tags: "docker"
